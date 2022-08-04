@@ -4,17 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link rel="stylesheet" href="estilo.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title> 
+
 </head>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script> 
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script> 
+
+
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyBLHVGPrDjsr4hE44MHKVqE2Xi5W-0AgOg",
+  authDomain: "arduino-lampada.firebaseapp.com",
+  databaseURL: "https://arduino-lampada-default-rtdb.firebaseio.com",
+  projectId: "arduino-lampada",
+  storageBucket: "arduino-lampada.appspot.com",
+  messagingSenderId: "79394226048",
+  appId: "1:79394226048:web:f2b9acccffcc8988b50b65",
+  measurementId: "G-BBHNBXCDW8"
+    } 
+
+    firebase.initializeApp(firebaseConfig)
+
+    function ligar(){ 
+        firebase.database().ref('SALA').set({estado: 'LIGADA'})
+    } 
+
+    function desligar(){ 
+        firebase.database().ref('SALA').set({estado: 'DESLIGADA'})  
+
+    }
+</script> 
+
 <body>
     <header> 
-        <h1>Aula Arduino</h1> 
-        <h2>Estado da Lampada</h2>
+        <h1>Curso de Arduino</h1> 
+        <h2>Controle de Iluminacao</h2>
     </header> 
     <main> 
-        <button id="acender">Acender Lampada</button>  
-        <button id="desligar">Desligar Lampada</button>
-    </main>
+        <button id="acender" onclick="ligar()">Acender Lampada</button>  
+        <button id="desligar" onclick="desligar()">Desligar lampada</button> 
+    </main> 
 </body>
 </html>
